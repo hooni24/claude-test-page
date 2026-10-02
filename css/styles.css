@@ -1,0 +1,270 @@
+/* 커스텀 스타일 (Tailwind CSS 보완용) */
+
+/* ===== 배경 그라데이션 ===== */
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+    background-attachment: fixed;
+}
+
+/* ===== 카드 스타일 개선 ===== */
+.bg-white {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(226, 232, 240, 0.5);
+}
+
+/* ===== 버킷 리스트 항목 카드 ===== */
+.bucket-item {
+    animation: slideIn 0.3s ease-out;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%) !important;
+    border: 1px solid rgba(226, 232, 240, 0.8) !important;
+    box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bucket-item:hover {
+    box-shadow: 0 20px 50px -10px rgba(15, 23, 42, 0.2);
+    transform: translateY(-4px);
+    border-color: rgba(226, 232, 240, 1);
+}
+
+/* ===== 필터 버튼 ===== */
+.filter-btn {
+    background-color: rgba(243, 244, 246, 0.9);
+    color: #6b7280;
+    border: 2px solid transparent;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.filter-btn:hover {
+    background-color: rgba(229, 231, 235, 0.95);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.filter-btn.active {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+    border-color: #1d4ed8;
+    box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3);
+}
+
+/* ===== 추가 버튼 ===== */
+#bucketForm button {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+}
+
+#bucketForm button:hover {
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
+    transform: translateY(-2px);
+}
+
+#bucketForm button:active {
+    transform: translateY(0);
+}
+
+/* ===== 수정/삭제 버튼 ===== */
+.bucket-item .bg-blue-100:hover {
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    transform: translateY(-2px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bucket-item .bg-red-100:hover {
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+    transform: translateY(-2px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== 입력 필드 ===== */
+input[type="text"] {
+    background: rgba(255, 255, 255, 0.9) !important;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    background: rgba(255, 255, 255, 1) !important;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1), 0 0 0 1px rgba(59, 130, 246, 0.5) !important;
+    border-color: #3b82f6 !important;
+}
+
+/* ===== 슬라이드인 애니메이션 ===== */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== 완료된 항목 스타일 ===== */
+.bucket-item .line-through {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+/* ===== 체크박스 호버 효과 ===== */
+.bucket-item button[onclick*="handleToggle"]:hover {
+    transform: scale(1.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== 스크롤바 스타일 ===== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #764ba2 0%, #667eea 100%);
+}
+
+/* ===== 모바일 반응형 ===== */
+@media (max-width: 640px) {
+    body {
+        background-attachment: scroll;
+    }
+
+    .bucket-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .bucket-item > div:last-child {
+        width: 100%;
+        justify-content: flex-end;
+        margin-top: 8px;
+    }
+
+    .filter-btn {
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
+/* ===== 빈 상태 메시지 애니메이션 ===== */
+#emptyState {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ===== 모달 애니메이션 ===== */
+#editModal {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.2s ease-in;
+}
+
+#editModal > div {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: 0 20px 50px -10px rgba(15, 23, 42, 0.3);
+    animation: scaleIn 0.2s ease-out;
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ===== 통계 숫자 애니메이션 ===== */
+#totalCount, #completedCount, #progressCount, #completionRate {
+    transition: all 0.3s ease;
+}
+
+/* ===== 다크 모드 지원 ===== */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 25%, #2d1b69 50%, #1a365d 75%, #164e63 100%);
+    }
+
+    .bg-white {
+        background: rgba(30, 41, 59, 0.8) !important;
+        border-color: rgba(51, 65, 85, 0.5) !important;
+    }
+
+    .bucket-item {
+        background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.8) 100%) !important;
+        border-color: rgba(51, 65, 85, 0.5) !important;
+    }
+
+    .bucket-item:hover {
+        border-color: rgba(71, 85, 105, 0.8) !important;
+    }
+
+    .text-gray-800 {
+        color: #f1f5f9 !important;
+    }
+
+    .text-gray-600 {
+        color: #cbd5e1 !important;
+    }
+
+    .text-gray-400 {
+        color: #94a3b8 !important;
+    }
+
+    .border-gray-300 {
+        border-color: #475569 !important;
+    }
+
+    input[type="text"] {
+        background: rgba(15, 23, 42, 0.5) !important;
+        border-color: #475569 !important;
+        color: #f1f5f9 !important;
+    }
+
+    input[type="text"]:focus {
+        background: rgba(30, 41, 59, 0.8) !important;
+    }
+
+    .filter-btn {
+        background-color: rgba(51, 65, 85, 0.5);
+        color: #cbd5e1;
+    }
+
+    .filter-btn:hover {
+        background-color: rgba(71, 85, 105, 0.7);
+    }
+
+    #editModal > div {
+        background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
+        border-color: rgba(51, 65, 85, 0.5) !important;
+    }
+
+    .bg-blue-100 {
+        background-color: rgba(59, 130, 246, 0.2) !important;
+    }
+
+    .bg-red-100 {
+        background-color: rgba(239, 68, 68, 0.2) !important;
+    }
+}
